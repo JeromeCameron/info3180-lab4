@@ -50,6 +50,24 @@ def upload():
 
     return render_template('upload.html')
 
+def get_uploaded_images():
+
+    rootdir = os.getcwd()
+    image_list = []
+    for subdir, dirs, files in os.walk(rootdir + '/app/static/uploads'):
+        for file in files:
+            if file.endswith('.' + "png") or file.endswith('.' + "jpg"):
+                image_list.append(file)
+    return image_list
+
+@app.route('/files')
+def files():
+    if not session.get('logged_in'):
+        abort(401)
+    
+    image_list = get_uploaded_images()
+    return render_template('files.html', images=image_list)
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():

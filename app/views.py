@@ -35,12 +35,12 @@ def upload():
     myform = UploadForm()
 
     if request.method == 'GET':
-        return render_template('upload.html')
+        return render_template('upload.html', form=myform)
 
     # Validate file upload on submit
     if request.method == 'POST':
         
-        # if myform.validate_on_submit():
+        if myform.validate_on_submit():
         # Get file data and save to your uploads folder
             img = myform.photo.data
             filename = secure_filename(img.filename)
@@ -48,7 +48,7 @@ def upload():
             flash('File Saved', 'success')
             return redirect(url_for('home'))
 
-    return render_template('upload.html')
+    return render_template('upload.html', form=myform)
 
 def get_uploaded_images():
 

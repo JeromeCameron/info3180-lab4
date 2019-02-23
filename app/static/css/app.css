@@ -16,7 +16,7 @@ footer{
 
 .image{
     height: 150px;
-    width: 200px;   
+    width: 250px;   
 }
 
 .list{
@@ -28,7 +28,7 @@ footer{
     width: 800px;
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 250px);
     grid-template-rows: repeat(3, 150px);
     grid-auto-flow: row;
   }
